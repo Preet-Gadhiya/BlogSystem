@@ -105,7 +105,7 @@ namespace WcfBlogServiceLibrary
                         s.title = rdr.GetString(1);
                         s.content = rdr.GetString(3);
                         s.blogby = rdr.GetString(5);
-                     
+                        s.doc = rdr.GetDateTime(2);
                    
                     }
                 }

@@ -1,0 +1,130 @@
+﻿@model BlogSystemDotNetClient.ServiceReference1.MyBlog
+
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <title>Update Page</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+    <link href='https://fonts.googleapis.com/icon?family=Material Icons' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById('myDIV');
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class='nav-wrapper'>
+            <a href='#' class='brand-logo center'>MyBlogger</a>
+            <ul id='nav-mobile' class='left hide-on-med-and-down'>
+                <li>
+                    <a class='navbar-brand' href='index.jsp'>
+                        <i class='material-icons' style='font-size:50px;'>home</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class=collection id=myDIV style=display:none;>
+        <a href=#! class=collection-item>Blog Updated Successfully.</a>
+    </div>
+
+    @using (Html.BeginForm("UpdateBlog", "Blog", FormMethod.Post))
+    { 
+        <table>
+
+
+            <tr>
+
+
+                <td>
+
+                    Blog Number
+
+                </td>
+
+                <td>
+
+                     @Html.TextBox("blogNO", null, new { @class = " validate", placeholder = "Blog No", @style = "width:400px;", @required = true, @value = Model.blogNO, @disabled = true })
+                     @Html.Hidden("blog",Model.blogNO)
+
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+
+                <td>
+
+                    Tile
+
+                </td>
+
+                <td>
+
+                     @Html.TextBox("title", null, new { @class = " validate", placeholder = "Title of Blog", @style = "width:400px;", @value = Model.title, @required = true })
+                </td>
+
+            </tr>
+
+
+
+
+
+            <tr>
+
+
+                <td>
+
+                    Blog By
+
+                </td>
+
+                <td>
+
+                     @Html.TextBox("blogby", null, new { @class = " validate", placeholder = "Author of Blog", @style = "width:400px;", @required = true, @value = Model.blogby , @disabled=true })
+                </td>
+
+            </tr>
+
+
+
+            <tr>
+
+
+                <td>
+
+                    Content
+
+                </td>
+
+                <td>
+                     @Html.TextArea("content", null, new { @class = " validate", placeholder = "Description of Blog", @style = "width:400px;", @value = Model.content })
+                </td>
+
+            </tr>
+
+        </table>
+
+        
+    <input onclick='myFunction()' class='btn blue' type='submit' value='Confirm Updation' />
+    }
+    <br />
+    <a class='btn' href='/Home/Index'>HOME</a>
+
+</body>
+</html>

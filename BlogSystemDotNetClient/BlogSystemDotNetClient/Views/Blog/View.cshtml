@@ -1,0 +1,151 @@
+﻿@model BlogSystemDotNetClient.ServiceReference1.MyBlog
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <title>Update page</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+    <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+</head>
+<body>
+    <nav>
+
+        <div class='nav-wrapper'>
+
+            <a href='#' class='brand-logo center'>MyBlogger</a>
+            <ul id='nav-mobile' class='left hide-on-med-and-down'>
+
+
+                <li>
+
+                    <a class='navbar-brand' href='index.jsp'>
+
+                        <i class='material-icons' style='font-size:50px;'>home</i>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <br><br>
+    <table class='table table-hover'>
+
+
+        <tr>
+
+
+            <td>
+
+                Blog Number
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.blogNO)
+               
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+
+            <td>
+
+                Blog Title
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(model => model.title)
+
+            </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+            <td>
+
+                Date of created
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(model => model.doc.Day)
+                -
+                @Html.DisplayFor(model => model.doc.Month)
+                -
+                @Html.DisplayFor(model => model.doc.Year)
+
+            </td>
+
+        </tr>
+
+
+
+        <tr>
+
+
+            <td>
+
+                Blog is Written by
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(model => model.blogby)
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+
+            <td>
+
+                Blog Content
+
+            </td>
+
+            <td>
+
+                @Html.DisplayFor(model => model.content)
+            </td>
+        </tr>
+    </table>
+    <br />
+    <form action='/Blog/Update' class='center' method='post'>
+
+        <input type='hidden' name='updateblogNO' value = @Model.blogNO >
+
+        <input type='submit' class='btn blue' value='Update Record' />
+    </form><br>
+    <form action='/Blog/Delete' class='center' method='post'>
+        <input type='hidden' name='deleteblogNO' value=@Model.blogNO >
+        <input type='submit' class='btn red' value='Delete Record' />
+    </form>
+    <br><a class='btn' href='/Home/Index'>HOME</a>
+</body>
+</html>

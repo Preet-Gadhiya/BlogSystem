@@ -224,6 +224,9 @@
     <Content Include="Views\Blog\AddBlog.cshtml" />
     <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\Blog\AllBlog.cshtml" />
+    <Content Include="Views\Blog\View.cshtml" />
+    <Content Include="Views\Blog\Delete.cshtml" />
+    <Content Include="Views\Blog\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

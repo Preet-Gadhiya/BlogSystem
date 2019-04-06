@@ -115,9 +115,8 @@
                 @using (Html.BeginForm("View", "Blog", FormMethod.Post))
                 {
 
-                    @Html.Hidden("para",)
-                    <input type='hidden' name='para' value=' @s.blogNO  '>
-
+                    @Html.Hidden("para",s.blogNO)
+                    
                     <button class='btn waves-effect waves-light' type='submit'>
                         View
                         <i class='material-icons right'></i>
