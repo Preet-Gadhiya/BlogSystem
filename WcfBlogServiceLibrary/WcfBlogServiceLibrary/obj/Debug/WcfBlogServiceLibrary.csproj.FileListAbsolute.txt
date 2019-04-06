@@ -1,0 +1,7 @@
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\bin\Debug\WcfBlogServiceLibrary.dll.config
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\bin\Debug\WcfBlogServiceLibrary.dll
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\bin\Debug\WcfBlogServiceLibrary.pdb
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\obj\Debug\WcfBlogServiceLibrary.csprojAssemblyReference.cache
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\obj\Debug\WcfBlogServiceLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\obj\Debug\WcfBlogServiceLibrary.dll
+C:\Users\Rp\Desktop\SOC Project\WcfBlogServiceLibrary\WcfBlogServiceLibrary\obj\Debug\WcfBlogServiceLibrary.pdb
