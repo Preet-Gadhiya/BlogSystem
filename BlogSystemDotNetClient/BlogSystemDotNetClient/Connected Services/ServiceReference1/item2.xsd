@@ -15,6 +15,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="unm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="unm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddBlog">
     <xs:complexType>
       <xs:sequence>
@@ -41,6 +71,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllMyBlog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="unm" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMyBlogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary" minOccurs="0" name="GetAllMyBlogResult" nillable="true" type="q3:ArrayOfMyBlog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBlogById">
     <xs:complexType>
       <xs:sequence>
@@ -51,14 +95,14 @@
   <xs:element name="GetBlogByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary" minOccurs="0" name="GetBlogByIdResult" nillable="true" type="q3:MyBlog" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary" minOccurs="0" name="GetBlogByIdResult" nillable="true" type="q4:MyBlog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateBlog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary" minOccurs="0" name="s" nillable="true" type="q4:MyBlog" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary" minOccurs="0" name="s" nillable="true" type="q5:MyBlog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

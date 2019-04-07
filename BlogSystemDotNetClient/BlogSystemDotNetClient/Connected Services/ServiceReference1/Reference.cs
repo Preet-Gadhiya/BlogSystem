@@ -35,10 +35,10 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
         private System.DateTime docField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string passwordField;
+        private string titleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string titleField;
+        private int uidField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -103,19 +103,6 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.passwordField, value) != true)) {
-                    this.passwordField = value;
-                    this.RaisePropertyChanged("password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string title {
             get {
                 return this.titleField;
@@ -124,6 +111,19 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
                 if ((object.ReferenceEquals(this.titleField, value) != true)) {
                     this.titleField = value;
                     this.RaisePropertyChanged("title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                if ((this.uidField.Equals(value) != true)) {
+                    this.uidField = value;
+                    this.RaisePropertyChanged("uid");
                 }
             }
         }
@@ -148,6 +148,18 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/GetData", ReplyAction="http://tempuri.org/IBlog/GetDataResponse")]
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/AddUser", ReplyAction="http://tempuri.org/IBlog/AddUserResponse")]
+        bool AddUser(string unm, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/AddUser", ReplyAction="http://tempuri.org/IBlog/AddUserResponse")]
+        System.Threading.Tasks.Task<bool> AddUserAsync(string unm, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/CheckUser", ReplyAction="http://tempuri.org/IBlog/CheckUserResponse")]
+        int CheckUser(string unm, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/CheckUser", ReplyAction="http://tempuri.org/IBlog/CheckUserResponse")]
+        System.Threading.Tasks.Task<int> CheckUserAsync(string unm, string pass);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/AddBlog", ReplyAction="http://tempuri.org/IBlog/AddBlogResponse")]
         string AddBlog(BlogSystemDotNetClient.ServiceReference1.MyBlog s);
         
@@ -159,6 +171,12 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/GetAllBlog", ReplyAction="http://tempuri.org/IBlog/GetAllBlogResponse")]
         System.Threading.Tasks.Task<BlogSystemDotNetClient.ServiceReference1.MyBlog[]> GetAllBlogAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/GetAllMyBlog", ReplyAction="http://tempuri.org/IBlog/GetAllMyBlogResponse")]
+        BlogSystemDotNetClient.ServiceReference1.MyBlog[] GetAllMyBlog(string unm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/GetAllMyBlog", ReplyAction="http://tempuri.org/IBlog/GetAllMyBlogResponse")]
+        System.Threading.Tasks.Task<BlogSystemDotNetClient.ServiceReference1.MyBlog[]> GetAllMyBlogAsync(string unm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBlog/GetBlogById", ReplyAction="http://tempuri.org/IBlog/GetBlogByIdResponse")]
         BlogSystemDotNetClient.ServiceReference1.MyBlog GetBlogById(int id);
@@ -214,6 +232,22 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
             return base.Channel.GetDataAsync(value);
         }
         
+        public bool AddUser(string unm, string pass) {
+            return base.Channel.AddUser(unm, pass);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddUserAsync(string unm, string pass) {
+            return base.Channel.AddUserAsync(unm, pass);
+        }
+        
+        public int CheckUser(string unm, string pass) {
+            return base.Channel.CheckUser(unm, pass);
+        }
+        
+        public System.Threading.Tasks.Task<int> CheckUserAsync(string unm, string pass) {
+            return base.Channel.CheckUserAsync(unm, pass);
+        }
+        
         public string AddBlog(BlogSystemDotNetClient.ServiceReference1.MyBlog s) {
             return base.Channel.AddBlog(s);
         }
@@ -228,6 +262,14 @@ namespace BlogSystemDotNetClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<BlogSystemDotNetClient.ServiceReference1.MyBlog[]> GetAllBlogAsync() {
             return base.Channel.GetAllBlogAsync();
+        }
+        
+        public BlogSystemDotNetClient.ServiceReference1.MyBlog[] GetAllMyBlog(string unm) {
+            return base.Channel.GetAllMyBlog(unm);
+        }
+        
+        public System.Threading.Tasks.Task<BlogSystemDotNetClient.ServiceReference1.MyBlog[]> GetAllMyBlogAsync(string unm) {
+            return base.Channel.GetAllMyBlogAsync(unm);
         }
         
         public BlogSystemDotNetClient.ServiceReference1.MyBlog GetBlogById(int id) {

@@ -15,14 +15,14 @@ namespace BlogSystemDotNetClient.Controllers
             return View();
         }
 
-        public ActionResult Blog(string title , string content , string blogby , string password)
+        public ActionResult Blog(string title , string content , string blogby)
         {
             BlogClient service = new BlogClient();            
             MyBlog stu = new MyBlog();
             stu.blogby = blogby;
             stu.content = content;
             stu.title = title;
-            stu.password = password;
+            stu.uid = (int)Session["uid"];
             string p=service.AddBlog(stu);
             return View();
         }
@@ -33,7 +33,23 @@ namespace BlogSystemDotNetClient.Controllers
             return View(arr);
         }
 
+        public ActionResult AllMyBlog()
+        {
+            BlogClient service = new BlogClient();
+            String id = (String)Session["unm"];
+            MyBlog[] arr = service.GetAllMyBlog(id);
+            return View(arr);
+        }
+
         public ActionResult View(string para)
+        {
+            Int32 id = Int32.Parse(para);
+            BlogClient service = new BlogClient();
+            MyBlog stu = service.GetBlogById(id);
+            return View(stu);
+        }
+
+        public ActionResult ViewMy(string para)
         {
             Int32 id = Int32.Parse(para);
             BlogClient service = new BlogClient();

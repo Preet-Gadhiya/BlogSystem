@@ -17,6 +17,40 @@ namespace WcfBlogServiceLibrary
             return string.Format("You entered: {0}", value);
         }
 
+        
+
+        public int CheckUser(string unm , string pass)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Rp\Documents\Blog.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [User] WHERE username=@username", con);
+            cmd.Parameters.AddWithValue("@username", unm);
+
+            cmd.CommandType = CommandType.Text;
+
+
+
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+
+                
+                if (rdr.Read())
+                {
+                  if(  rdr.GetString(2) ==  pass )
+                    {
+                        return rdr.GetInt32(0);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+            return 1;
+            
+        }
+
         public string UpdateBlog(MyBlog s)
         {
             string result = "";
@@ -81,6 +115,7 @@ namespace WcfBlogServiceLibrary
 
         public MyBlog GetBlogById(int id)
         {
+
             MyBlog s = new MyBlog();
             try
             {
@@ -104,7 +139,7 @@ namespace WcfBlogServiceLibrary
                         s.blogNO = rdr.GetInt32(0);
                         s.title = rdr.GetString(1);
                         s.content = rdr.GetString(3);
-                        s.blogby = rdr.GetString(5);
+                        s.blogby = rdr.GetString(4);
                         s.doc = rdr.GetDateTime(2);
                    
                     }
@@ -130,8 +165,8 @@ namespace WcfBlogServiceLibrary
                 SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Rp\Documents\Blog.mdf;Integrated Security=True;Connect Timeout=30");
                 SqlCommand cmd = new SqlCommand();
 
-                string Query = @"INSERT INTO [Table] (title,doc,blogby,content,password)  
-                                               Values(@title,@doc,@blogby,@content,@password)";
+                string Query = @"INSERT INTO [Table] (title,doc,blogby,content,uid)  
+                                               Values(@title,@doc,@blogby,@content,@uid)";
 
                 cmd = new SqlCommand(Query, con);
                 s.doc = DateTime.Now;
@@ -141,7 +176,7 @@ namespace WcfBlogServiceLibrary
                 cmd.Parameters.AddWithValue("@doc", s.doc.Date);
                 cmd.Parameters.AddWithValue("@blogby", s.blogby);
                 cmd.Parameters.AddWithValue("@content", s.content);
-                cmd.Parameters.AddWithValue("@password", s.password);
+                cmd.Parameters.AddWithValue("@uid", s.uid);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -153,6 +188,26 @@ namespace WcfBlogServiceLibrary
             }
 
             return result;
+        }
+
+        public bool AddUser(string unm,string pass)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Rp\Documents\Blog.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlCommand cmd = new SqlCommand();
+
+            string Query = @"INSERT INTO [User] (username,password)  
+                                               Values(@username,@password)";
+
+            cmd = new SqlCommand(Query, con);
+
+
+
+            cmd.Parameters.AddWithValue("@username", unm);
+            cmd.Parameters.AddWithValue("@password", pass);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            return true;
         }
 
         public List<MyBlog> GetAllBlog()
@@ -181,13 +236,66 @@ namespace WcfBlogServiceLibrary
                 obj.doc = Convert.ToDateTime(_dataRow["doc"]);
                 obj.blogby = Convert.ToString(_dataRow["blogby"]);
                 obj.content = Convert.ToString(_dataRow["content"]);
-                obj.password = Convert.ToString(_dataRow["password"]);
+                obj.uid = Convert.ToInt32(_dataRow["uid"]);
                 objList.Add(obj);
             }
 
             return objList;
         }
 
-        
+        public List<MyBlog> GetAllMyBlog(string unm)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Rp\Documents\Blog.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [User] WHERE username=@username", con);
+            cmd.Parameters.AddWithValue("@username", unm);
+
+            cmd.CommandType = CommandType.Text;
+
+            int uuid=0;
+
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+
+
+                if (rdr.Read())
+                {
+                    uuid=rdr.GetInt32(0); 
+                }
+            }
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnection con2 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Rp\Documents\Blog.mdf;Integrated Security=True;Connect Timeout=30");
+
+                string Query = "SELECT * FROM [Table] WHERE uid=@uid";
+
+                SqlDataAdapter sda = new SqlDataAdapter(Query, con2);
+                sda.SelectCommand.Parameters.AddWithValue("@uid",uuid);
+                sda.Fill(ds);
+            }
+            catch (FaultException fex)
+            {
+                throw new FaultException<string>("Error: " + fex);
+            }
+
+            List<MyBlog> objList = new List<MyBlog>();
+            foreach (DataRow _dataRow in ds.Tables[0].Rows)
+            {
+                MyBlog obj = new MyBlog();
+                obj.blogNO = Convert.ToInt32(_dataRow["blogNO"]);
+                obj.title = Convert.ToString(_dataRow["title"]);
+                obj.doc = Convert.ToDateTime(_dataRow["doc"]);
+                obj.blogby = Convert.ToString(_dataRow["blogby"]);
+                obj.content = Convert.ToString(_dataRow["content"]);
+                obj.uid = Convert.ToInt32(_dataRow["uid"]);
+                objList.Add(obj);
+            }
+
+            return objList;
+        }
+
+
     }
 }

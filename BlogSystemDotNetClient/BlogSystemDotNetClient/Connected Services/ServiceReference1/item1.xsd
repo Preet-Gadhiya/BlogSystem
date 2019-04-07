@@ -6,8 +6,8 @@
       <xs:element minOccurs="0" name="blogby" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="doc" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uid" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MyBlog" nillable="true" type="tns:MyBlog" />

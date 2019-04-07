@@ -14,25 +14,39 @@
 </head>
 <body class='grey lighten-1'>
      <nav>
-           <div class='nav-wrapper'>
-             
-                 <a href='#' class='brand-logo center'>MyBlogger</a> 
-                <ul id='nav-mobile' class='left hide-on-med-and-down'>
-                 
-                  
-                <li>
-                     
-                       <a class='navbar-brand' href='/Home/Index'>
-                         
-                             <i class='material-icons' style='font-size:50px;'>home</i>  
-                           
-                    </a> 
-                      
-                </li> 
-                  
-            </ul> 
-              
-        </div> 
+         <div class='nav-wrapper'>
+
+             <a href='#' class='brand-logo center'>BlogHub</a>
+             <ul id='nav-mobile' class='left hide-on-med-and-down'>
+
+
+                 <li>
+
+                     <a class='navbar-brand' href='/Home/Index'>
+
+                         <i class='material-icons' style='font-size:50px;'>home</i>
+
+                     </a>
+
+                 </li>
+
+             </ul>
+             <ul id='nav-mobile' class='right hide-on-med-and-down'>
+
+
+                 <li>
+
+                     <a class='navbar-brand' href='/Login/Logout' style="font-size:30px;">
+
+                         Logout
+
+                     </a>
+
+                 </li>
+
+             </ul>
+
+         </div> 
           
     </nav> 
 
@@ -79,16 +93,7 @@
                                        </div>
 
                                    </div>
-
-                                   <div class='row '>
-
-                                       <div class='input-field col s12'>
-                                           Password  &nbsp;&nbsp; : &nbsp;&nbsp; @Html.Password("password", null, new { @class = " validate", placeholder = "Password", @style = "width:400px;", @required = true })
-
-
-                                       </div>
-
-                                   </div>
+                                   
 
                                    <button class='btn waves-effect waves-light' type='submit' name='action'>
                                        Submit

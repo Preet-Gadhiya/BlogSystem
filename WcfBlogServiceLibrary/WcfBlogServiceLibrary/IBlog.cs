@@ -13,12 +13,22 @@ namespace WcfBlogServiceLibrary
     {
         [OperationContract]
         string GetData(int value);
+
+        [OperationContract]
+        bool AddUser(string unm, string pass);
+
+        [OperationContract]
+        int CheckUser(string unm , string pass);
+
         
         [OperationContract]
         string AddBlog(MyBlog s);
 
         [OperationContract]
         List<MyBlog> GetAllBlog();
+
+        [OperationContract]
+        List<MyBlog> GetAllMyBlog(string unm);
 
         [OperationContract]
         MyBlog GetBlogById(int id);
@@ -43,7 +53,7 @@ namespace WcfBlogServiceLibrary
         string _title;
         DateTime _doc;
         string _content;
-        string _password;
+        int _uid;
 
 
         [DataMember]
@@ -51,6 +61,13 @@ namespace WcfBlogServiceLibrary
         {
             get { return _blogNO; }
             set { _blogNO = value; }
+        }
+
+        [DataMember]
+        public int uid
+        {
+            get { return _uid; }
+            set { _uid = value; }
         }
 
         [DataMember]
@@ -81,12 +98,40 @@ namespace WcfBlogServiceLibrary
             set { _content = value; }
         }
 
+        
+    }
+
+    [DataContract]
+    public class User
+    {
+        int _uid;
+        string _username;
+        string _password;
+
+
+        [DataMember]
+        public int uid
+        {
+            get { return _uid; }
+            set { _uid = value; }
+        }
+
+        [DataMember]
+        public string username
+        {
+            get { return _username; }
+            set { _username = value; }
+        }
+
+        
+
         [DataMember]
         public string password
         {
             get { return _password; }
             set { _password = value; }
         }
+        
 
     }
 }

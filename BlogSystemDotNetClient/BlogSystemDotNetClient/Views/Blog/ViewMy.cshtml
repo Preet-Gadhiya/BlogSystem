@@ -67,7 +67,7 @@
 
             <td>
                 @Html.DisplayFor(model => model.blogNO)
-               
+
 
             </td>
 
@@ -151,6 +151,16 @@
     </table>
     <br />
 
+    <form action='/Blog/Update' class='center' method='post'>
+
+        <input type='hidden' name='updateblogNO' value=@Model.blogNO>
+
+        <input type='submit' class='btn blue' value='Update Record' />
+    </form><br>
+    <form action='/Blog/Delete' class='center' method='post'>
+        <input type='hidden' name='deleteblogNO' value=@Model.blogNO>
+        <input type='submit' class='btn red' value='Delete Record' />
+    </form>
     <br><a class='btn' href='/Home/Index'>HOME</a>
 </body>
 </html>
