@@ -16,25 +16,38 @@
     <body>
         <nav>
         <div class='nav-wrapper'>
-      <a href='#' class='brand-logo center'>MyBlogger</a>
+      <a href='home.jsp' class='brand-logo center'>BlogHub</a>
       <ul id='nav-mobile' class='left hide-on-med-and-down'>
         <li> 
-          <a class='navbar-brand' href='index.jsp'>
+          <a class='navbar-brand' href='home.jsp'>
           <i class='material-icons' style='font-size:50px;'>home</i> 
           </a>
           </li>
       </ul>
+      <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                <li>
+                    <a class='navbar-brand' href='logout.jsp' style="font-size:30px;">
+                        Logout
+                    </a>
+                </li>
+      </ul>
     </div>
       </nav>      
-        <%
-            String msg=session.getAttribute("addResult").toString();
+        <%  String msg=null;
+            if(session.getAttribute("unm")==null)
+            {
+              response.sendRedirect("index.jsp");
+            }
+            else{
+             msg=session.getAttribute("addResult").toString();
             session.removeAttribute("addResult");
+            }
             if(msg != null && !msg.isEmpty())
         {%>
             
       <%=  "<h3>Blog Added Successfully</h3>"
           +"<br><a class='btn red lighten-2' href='addBlog.jsp'>Add Another</a><br>"%> 
   <%}%>
-  <%= "<br/><a class='btn' href='index.jsp'>Home</a>"%>
+  <%= "<br/><a class='btn' href='home.jsp'>Home</a>"%>
     </body>
 </html>

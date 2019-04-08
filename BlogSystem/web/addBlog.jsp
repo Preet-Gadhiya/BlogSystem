@@ -1,9 +1,9 @@
-<%-- 
-    Document   : AddBlog
-    Created on : 17 Mar, 2019, 1:07:35 PM
-    Author     : Rp
---%>
-
+<%
+    if(session.getAttribute("unm")==null)
+          {
+              response.sendRedirect("index.jsp");
+          }
+ %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="javax.xml.datatype.DatatypeFactory"%>
 <%@page import="javax.xml.datatype.XMLGregorianCalendar"%>
@@ -57,10 +57,7 @@
         blogby = new JAXBElement(new QName("http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary","blogby"),String.class,sblogby);
         stu.setBlogby(blogby);
     
-        String spassword=request.getParameter("password");
-        JAXBElement <String> password;
-        password = new JAXBElement(new QName("http://schemas.datacontract.org/2004/07/WcfBlogServiceLibrary","password"),String.class,spassword);
-        stu.setPassword(password);
+        stu.setUid((Integer) session.getAttribute("uid"));
     
         
       
@@ -69,7 +66,6 @@
         if(msg != null && !msg.isEmpty())
         {  
         
-
               session.setAttribute("addResult", msg);
               response.sendRedirect("addResult.jsp");
         
@@ -84,14 +80,21 @@
             
   "<nav>"
    +" <div class='nav-wrapper'>"
-   +"   <a href='#' class='brand-logo center'>MyBlogger</a>"
+   +"   <a href='home.jsp' class='brand-logo center'>BlogHub</a>"
     +"  <ul id='nav-mobile' class='left hide-on-med-and-down'>"
     +"    <li> "
-          + "<a class='navbar-brand' href='index.jsp'>"
+          + "<a class='navbar-brand' href='home.jsp'>"
   + "  <i class='material-icons' style='font-size:50px;'>home</i> "
  + "</a>"
           +"</li>"
      +" </ul>"
+          +"   <ul id='nav-mobile' class='right hide-on-med-and-down'>"
+         +"       <li>"
+           +"     <a class='navbar-brand' href='logout.jsp' style='font-size:30px;'> "
+             +"           Logout"
+               +"     </a>"
+               +" </li>"
+      +"</ul>"
     +"</div>"
  +" </nav>"
         
@@ -146,14 +149,13 @@
            +" </form>"
                 +"&nbsp;"
                      +"<div class='center'>"
-                    + "<a href='index.jsp' class='waves-effect waves-light btn blue'>HOME</a>"
+                    + "<a href='home.jsp' class='waves-effect waves-light btn blue'>HOME</a>"
                 +"</div>"
            + " </div> "
              + " </div> "
           + " </div> "
          + " </div> "
      +" </div>"     
-
             
              
                 %>       

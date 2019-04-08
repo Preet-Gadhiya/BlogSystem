@@ -26,20 +26,31 @@
     </head>
     <body>
         
-        <% Blog service= new Blog();
+        <% if(session.getAttribute("unm")==null)
+            {
+              response.sendRedirect("index.jsp");
+            }
+           Blog service= new Blog();
            IBlog client= service.getBasicHttpBindingIBlog();
            ArrayOfMyBlog as=client.getAllBlog();
             %>
             <%=    "<nav>"
    +" <div class='nav-wrapper'>"
-   +"   <a href='#' class='brand-logo center'>MyBlogger</a>"
+   +"   <a href='home.jsp' class='brand-logo center'>BlogHub</a>"
     +"  <ul id='nav-mobile' class='left hide-on-med-and-down'>"
     +"    <li> "
-          + "<a class='navbar-brand' href='index.jsp'>"
+          + "<a class='navbar-brand' href='home.jsp'>"
   + "  <i class='material-icons' style='font-size:50px;'>home</i> "
  + "</a>"
           +"</li>"
      +" </ul>"
+                       +"   <ul id='nav-mobile' class='right hide-on-med-and-down'>"
+         +"       <li>"
+           +"     <a class='navbar-brand' href='logout.jsp' style='font-size:30px;'> "
+             +"           Logout"
+               +"     </a>"
+               +" </li>"
+      +"</ul>"
     +"</div>"
  +" </nav>"
               + "<table class='table table-dark centered responsive-table'>"
@@ -86,7 +97,7 @@
                      +"  </div> "
                     +"</td>"
                     +"<td>"
-                        +"<form  action='update.jsp' method='post' >"    
+                        +"<form  action='view.jsp' method='post' >"    
                             + "<input type='hidden' name='para' value='"+s.getBlogNO()+"'>"
                             
                             + " <button class='btn waves-effect waves-light' type='submit' >View"

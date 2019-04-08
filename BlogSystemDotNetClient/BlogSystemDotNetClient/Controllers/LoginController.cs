@@ -44,6 +44,8 @@ namespace BlogSystemDotNetClient.Controllers
 
         public ActionResult Logout()
         {
+            Session.Remove("uid");
+            Session.Remove("unm");
             return RedirectToAction("Index", "Login");
         }
     }

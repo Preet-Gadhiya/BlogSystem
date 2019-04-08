@@ -27,28 +27,42 @@
     <body>
         
         <%
+          String mess=null;
           Blog service= new Blog();
           IBlog client= service.getBasicHttpBindingIBlog();
+          if(session.getAttribute("unm")==null)
+          {
+              response.sendRedirect("index.jsp");
+          }
+          else{
           String str=request.getParameter("deleteblogNO");
           int id=Integer.parseInt(str);
-          String mess=client.deleteBlog(id);
+          mess=client.deleteBlog(id);
+          }
          %>
          <%=   "<nav>"
    +" <div class='nav-wrapper'>"
-   +"   <a href='#' class='brand-logo center'>MyBlogger</a>"
+   +"   <a href='home.jsp' class='brand-logo center'>BlogHub</a>"
     +"  <ul id='nav-mobile' class='left hide-on-med-and-down'>"
     +"    <li> "
-          + "<a class='navbar-brand' href='index.jsp'>"
+          + "<a class='navbar-brand' href='home.jsp'>"
   + "  <i class='material-icons' style='font-size:50px;'>home</i> "
  + "</a>"
           +"</li>"
      +" </ul>"
+        +"   <ul id='nav-mobile' class='right hide-on-med-and-down'>"
+         +"       <li>"
+           +"     <a class='navbar-brand' href='logout.jsp' style='font-size:30px;'> "
+             +"           Logout"
+               +"     </a>"
+               +" </li>"
+      +"</ul>"            
     +"</div>"
  +" </nav>"
              +"<h4>"
                  +mess
                  +"</h4>"
-       +"  <br/><a class='btn' href='index.jsp'>Home</a>"
+       +"  <br/><a class='btn' href='home.jsp'>Home</a>"
                  %>
     </body>
 </html>

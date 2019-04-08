@@ -3,6 +3,12 @@
     Created on : 18 Mar, 2019, 12:10:58 AM
     Author     : Rp
 --%>
+<%
+    if(session.getAttribute("unm")==null)
+          {
+              response.sendRedirect("index.jsp");
+          }
+ %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="javax.xml.datatype.DatatypeFactory"%>
 <%@page import="javax.xml.datatype.XMLGregorianCalendar"%>
@@ -36,13 +42,20 @@
     <body>
         <nav>       
       <div class='nav-wrapper'>
-      <a href='#' class='brand-logo center'>MyBlogger</a>
+      <a href='home.jsp' class='brand-logo center'>BlogHub</a>
       <ul id='nav-mobile' class='left hide-on-med-and-down'>
         <li> 
-          <a class='navbar-brand' href='index.jsp'>
+          <a class='navbar-brand' href='home.jsp'>
           <i class='material-icons' style='font-size:50px;'>home</i> 
           </a>
           </li>
+      </ul>
+      <ul id='nav-mobile' class='right hide-on-med-and-down'>
+                <li>
+                    <a class='navbar-brand' href='logout.jsp' style="font-size:30px;">
+                        Logout
+                    </a>
+                </li>
       </ul>
     </div>
  </nav>
@@ -144,7 +157,7 @@
                   +"<input type='hidden' name='updateblogNO' value='"+search.getBlogNO()+"'>"              
                 + "<input onclick='myFunction()' class='btn blue' type='submit' value='Confirm Updation'/></form>"
                 + "</br>"
-                +"<a class='btn' href='index.jsp'>HOME</a>"     
+                +"<a class='btn' href='home.jsp'>HOME</a>"     
                 %>       
         
         

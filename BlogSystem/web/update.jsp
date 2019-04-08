@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : update
     Created on : 17 Mar, 2019, 10:20:46 PM
@@ -42,14 +43,21 @@
             {    %>           
                 <%=   "<nav>"
    +" <div class='nav-wrapper'>"
-   +"   <a href='#' class='brand-logo center'>MyBlogger</a>"
+   +"   <a href='home.jsp' class='brand-logo center'>BlogHub</a>"
     +"  <ul id='nav-mobile' class='left hide-on-med-and-down'>"
     +"    <li> "
-          + "<a class='navbar-brand' href='index.jsp'>"
+          + "<a class='navbar-brand' href='home.jsp'>"
   + "  <i class='material-icons' style='font-size:50px;'>home</i> "
  + "</a>"
           +"</li>"
      +" </ul>"
+            +"   <ul id='nav-mobile' class='right hide-on-med-and-down'>"
+         +"       <li>"
+           +"     <a class='navbar-brand' href='logout.jsp' style='font-size:30px;'> "
+             +"           Logout"
+               +"     </a>"
+               +" </li>"
+      +"</ul>"
     +"</div>"
  +" </nav>"
                     + "<br><br>"
@@ -117,7 +125,7 @@
                   +"<input type='hidden' name='deleteblogNO' value='"+blog.getBlogNO()+"'>"              
                 + "<input type='submit' class='btn red' value='Delete Record'/></form>"           
                                 
-                  +"<br><a class='btn ' href='index.jsp'>HOME</a>" 
+                  +"<br><a class='btn ' href='home.jsp'>HOME</a>" 
                 %>       
            
          <% 
@@ -125,14 +133,9 @@
               }
           
            
-
             else//not found
-            {%>
-            <%=
-                "<br><h4>Student Not Found.</h4>"
-                 +"<br><a class='btn' href='index.jsp'>HOME</a>"     
-            %>
-        <%
+            {
+                response.sendRedirect("index.jsp");
             }
         
         %>
