@@ -91,7 +91,7 @@
                    + "<td>"
                     
                     + "<div class='card brown lighten-4'style='width:400px;'>"       
-                    + "<div class='card-content left-align'>"
+                    + "<div class='card-content left-align truncate '>"
                          + s.getContent().getValue()
                       +"  </div> "   
                      +"  </div> "

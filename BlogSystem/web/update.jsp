@@ -109,8 +109,18 @@
                         + "Blog Content"
                         + "</td>"
                         + "<td>" 
+                     + " <div class='card brown lighten-4' >"
+
+                    + " <div class='card-content left-align'> "
+
                         + blog.getContent().getValue()
+
+                   +" </div>"
+
+                    +" </div>"
+                      
                         +"</td>"
+                                
                         +"</tr>"
                         
                         

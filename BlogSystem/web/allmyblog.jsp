@@ -27,7 +27,7 @@
           }
            Blog service= new Blog();
            IBlog client= service.getBasicHttpBindingIBlog();
-           ArrayOfMyBlog as=client.getAllBlog();
+           ArrayOfMyBlog as=client.getAllMyBlog((String)session.getAttribute("unm"));
             %>
             <%=    "<nav>"
    +" <div class='nav-wrapper'>"
@@ -86,7 +86,7 @@
                    + "<td>"
                     
                     + "<div class='card brown lighten-4'style='width:400px;'>"       
-                    + "<div class='card-content left-align'>"
+                    + "<div class='card-content left-align truncate'>"
                          + s.getContent().getValue()
                       +"  </div> "   
                      +"  </div> "

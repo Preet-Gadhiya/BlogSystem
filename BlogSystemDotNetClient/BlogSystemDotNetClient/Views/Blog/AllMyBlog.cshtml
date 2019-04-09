@@ -12,6 +12,22 @@
     <link href='https://fonts.googleapis.com/icon?family=Material Icons' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
     <title>All Blogs</title>
+    <style>
+        div.b {
+            white-space: nowrap;
+            width: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 1px solid #000000;
+        }
+        div.a {
+            white-space: nowrap;
+            width: 50px;
+            overflow: hidden;
+            text-overflow: clip;
+            border: 1px solid #000000;
+        }
+        </style>
 </head>
 <body>
 
@@ -112,9 +128,9 @@
                     <td>
 
 
-                        <div class='card brown lighten-4' style='width:400px;'>
+                        <div class='card brown lighten-4' style='width:400px;height:100px;'>
 
-                            <div class='card-content left-align'>
+                            <div class='card-content left-align truncate'>
 
                                 @Html.DisplayFor(modelItem => s.content)
 

@@ -147,7 +147,7 @@
                         + "Content"
                         + "</td>"
                         + "<td>" 
-                       + "<input type='text' name='content' value='"+ search.getContent().getValue()+"' required/>"
+                       + "<input type='textarea' style='width:400px;height:250px;' name='content' value='"+ search.getContent().getValue()+"' required/>"
                         +"</td>"
                         +"</tr>"
                 +"</table>"
